@@ -1,0 +1,2 @@
+## This is a README file for the SQL Notebook project                       
+This project demonstrates how to use SQL within a Jupyter Notebook environment to create and manage a database for Spotify data. The notebook includes code snippets for creating a database, connecting to it, and performing various SQL operations.      
