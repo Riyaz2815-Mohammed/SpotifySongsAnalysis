@@ -1,5 +1,4 @@
 🎵 Spotify Songs Analysis
-📌 Overview
 
 This project focuses on exploratory data analysis (EDA) of Spotify songs to understand patterns in musical attributes and listener preferences. Using a real-world dataset, the analysis examines how features like energy, danceability, tempo, loudness, and popularity vary across tracks and genres.
 
