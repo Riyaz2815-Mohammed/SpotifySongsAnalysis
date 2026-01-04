@@ -1,71 +1,112 @@
-🎵 Spotify Songs Analysis
+# 🎧 Spotify Songs Analysis – API to Database Pipeline & SQL Analytics
 
-This project focuses on exploratory data analysis (EDA) of Spotify songs to understand patterns in musical attributes and listener preferences. Using a real-world dataset, the analysis examines how features like energy, danceability, tempo, loudness, and popularity vary across tracks and genres.
+##  Overview
+This project demonstrates an **end-to-end Spotify data pipeline**, where song metadata is fetched using the **Spotify Web API**, stored in a **MySQL database**, and analyzed using **SQL queries** inside a Jupyter Notebook.
 
-The goal of this project is to practice data cleaning, analysis, and visualization using Python and to extract meaningful insights from raw data.
+The focus of this project is:
+- API data extraction
+- Database design & ingestion
+- SQL-based analysis
+- Categorization and querying of music data
 
-🧠 Objectives
+This is not a machine learning project. It is a **data engineering + analytics workflow**.
 
-Explore and understand key audio features of Spotify songs
+## 🧱 Workflow Followed
+The project follows this structured flow:
 
-Identify patterns and relationships between musical attributes
+1. Connect to Spotify API  
+2. Extract track metadata using track URLs  
+3. Store extracted data into MySQL  
+4. Query and analyze stored data using SQL  
+5. Categorize tracks based on popularity  
 
-Visualize trends using clear and interpretable plots
+## 🛠️ Tools & Technologies Used
+- **Python**
+- **Spotify Web API (Spotipy)**
+- **MySQL**
+- **mysql-connector-python**
+- **ipython-sql**
+- **Jupyter Notebook**
+- **SQL**
 
-Strengthen hands-on skills in data analysis using Python
+## 🔑 Spotify API Integration
+- Authenticated using **Client Credentials Flow**
+- Fetched track metadata using Spotify track IDs
+- Extracted attributes such as:
+  - Track Name
+  - Artist Name
+  - Album Name
+  - Release Date
+  - Duration (minutes)
+  - Popularity score
 
-📊 Dataset
+## 🗄️ Database Setup (MySQL)
+- Connected to MySQL directly from Jupyter using `%sql`
+- Created a database: `spotify_db`
+- Designed a table `tracks` with the following schema:
 
-Source: Spotify songs dataset (CSV format)
+| Column Name     | Type          |
+|-----------------|---------------|
+| track_id        | INT (PK)      |
+| Track_Name      | VARCHAR       |
+| Artist_Name     | VARCHAR       |
+| Album_Name      | VARCHAR       |
+| Release_date    | DATE          |
+| Duration_min    | FLOAT         |
+| Popularity      | INT           |
 
-Contains attributes such as:
+- Performed operations such as:
+  - `CREATE TABLE`
+  - `DROP TABLE`
+  - `TRUNCATE TABLE`
+  - `INSERT`
+  - `SELECT`
 
-Popularity
+## 📥 Data Ingestion
+- Read track URLs from a text file
+- Extracted Spotify track IDs using **regular expressions**
+- Fetched metadata for each track via API
+- Inserted records into MySQL using parameterized queries
+- Successfully stored **multiple tracks** into the database
 
-Danceability
+## 📊 Data Exploration Using SQL
+Performed SQL queries directly inside the notebook to:
 
-Energy
+- View all records in the `tracks` table
+- Fetch individual tracks using `WHERE` conditions
+- Analyze popularity distribution using `CASE WHEN`
 
-Tempo
+### Popularity Classification Logic
+sql
+CASE
+  WHEN Popularity >= 80 THEN 'High'
+  WHEN Popularity >= 50 AND Popularity < 80 THEN 'Medium'
+  ELSE 'Low'
+END
 
-Loudness
+Result:
 
-Acousticness
+High popularity tracks
+Medium popularity tracks
+Low popularity tracks
 
-Valence
+This helps categorize songs based on audience reach.
 
-🛠️ Tech Stack
+📈 Key Observations
 
-Python
+Spotify popularity scores can be effectively categorized using SQL logic
+API data can be reliably stored and queried using relational databases
+Combining Python, SQL, and APIs enables powerful analytics workflows
+Jupyter + SQL magic provides an interactive analytics environment
 
-Pandas – data manipulation and analysis
+🧠 What I Learned
 
-Matplotlib – basic data visualization
+Working with third-party APIs (Spotify)
 
-Seaborn – advanced statistical visualizations
+Designing relational database schemas
 
-🔍 Analysis Performed
+Inserting and querying data using SQL
 
-Data loading and preprocessing
+Integrating Python and SQL inside Jupyter
 
-Handling missing values and basic cleaning
-
-Descriptive statistics of audio features
-
-Feature-wise distribution analysis
-
-Visualization of relationships between popularity and audio attributes
-
-📈 Key Insights
-
-Certain audio features like energy and danceability show noticeable trends with song popularity
-
-Feature distributions help highlight differences in musical styles
-
-Visualizations make it easier to interpret large datasets and hidden patterns
-
-
-🔗 Author
-
-Mohammed Riyaz A
-GitHub: https://github.com/Riyaz2815-Mohammed
+Building end-to-end data pipelines
